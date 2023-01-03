@@ -22,11 +22,35 @@ struct Home: View {
                             RoundedRectangle(cornerRadius: 10, style: .continuous)
                                 .fill(.ultraThickMaterial)
                         }
+                        
+                        //MARK: Songs List View
+                        songList
                     }
                     .padding()
                     .padding(.top)
                 }
         }
+    }
+}
+
+extension Home {
+    private var songList: some View {
+        ZStack {
+            VStack(spacing: 25) {
+                ForEach(albums) { album in
+                    HStack(spacing: 12) {
+                        Text("#\(getIndex(album: album) + 1)")
+                            .fontWeight(.semibold)
+                    }
+                }
+            }
+        }
+    }
+    
+    private func getIndex(album: Album) -> Int {
+        return albums.firstIndex { CAlbum in
+            CAlbum.id == album.id
+        } ?? 0
     }
 }
 
