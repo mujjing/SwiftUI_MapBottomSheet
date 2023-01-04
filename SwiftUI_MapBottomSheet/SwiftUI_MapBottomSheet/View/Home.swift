@@ -41,6 +41,12 @@ extension Home {
                     HStack(spacing: 12) {
                         Text("#\(getIndex(album: album) + 1)")
                             .fontWeight(.semibold)
+                        
+                        Image(systemName: "person.crop.square.fill")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 50, height: 50)
+                            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
                     }
                 }
             }
