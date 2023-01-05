@@ -60,6 +60,15 @@ extension Home {
                             .font(.caption)
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: album.isLiked ? "suit.heart.fill" : "suit.heart")
+                                .font(.title3)
+                                .foregroundColor(album.isLiked ? .red : .primary)
+                        }
+
                     }
                 }
             }
