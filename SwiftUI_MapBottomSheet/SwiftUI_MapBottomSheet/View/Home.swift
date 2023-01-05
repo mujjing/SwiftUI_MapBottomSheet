@@ -47,6 +47,19 @@ extension Home {
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 50, height: 50)
                             .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                        
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text(album.albumName)
+                                .fontWeight(.semibold)
+                            
+                            Label {
+                                Text("65, 78, 909")
+                            } icon: {
+                                Image(systemName: "beats.headphones")
+                            }
+                            .font(.caption)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
                 }
             }
