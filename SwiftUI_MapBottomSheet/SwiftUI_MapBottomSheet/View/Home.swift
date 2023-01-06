@@ -68,10 +68,19 @@ extension Home {
                                 .font(.title3)
                                 .foregroundColor(album.isLiked ? .red : .primary)
                         }
+                        
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: "ellipsis")
+                                .font(.title3)
+                                .foregroundColor(.primary)
+                        }
 
                     }
                 }
             }
+            .padding(.top, 15)
         }
     }
     
