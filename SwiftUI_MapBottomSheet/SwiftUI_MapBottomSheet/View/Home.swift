@@ -13,22 +13,26 @@ struct Home: View {
             Map(coordinateRegion: .constant(region))
                 .ignoresSafeArea()
             //MARK: Building Sheet UI
-                .sheet(isPresented: .constant(true)) {
-                    VStack(spacing: 15) {
-                        TextField("Search Maps", text: .constant(""))
-                        .padding(.vertical, 10)
-                        .padding(.horizontal)
-                        .background {
-                            RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                .fill(.ultraThickMaterial)
+                .bottomSheet(presentationDetents: [.medium, .large, .height(70)], isPresented: .constant(true), sheetCornerRadius: 20) {
+                    ScrollView(.vertical, showsIndicators: false) {
+                        VStack(spacing: 15) {
+                            TextField("Search Maps", text: .constant(""))
+                            .padding(.vertical, 10)
+                            .padding(.horizontal)
+                            .background {
+                                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                    .fill(.ultraThickMaterial)
+                            }
+                            
+                            //MARK: Songs List View
+                            songList
                         }
-                        
-                        //MARK: Songs List View
-                        songList
+                        .padding()
+                        .padding(.top)
                     }
-                    .padding()
-                    .padding(.top)
+                } onDismiss: {
                 }
+
         }
     }
 }
