@@ -30,6 +30,10 @@ extension View {
                     
                     //From this extracting presentation controller
                     if let controller = windows.windows.first?.rootViewController?.presentedViewController, let sheet = controller.presentationController as? UISheetPresentationController {
+                        if isTransprentBG {
+                            controller.view.backgroundColor = .clear
+                        }
+                        controller.presentingViewController?.view.tintAdjustmentMode = .normal
                         //MARK: As Usual Set Properties What Ever Your Wish Here With Sheet Controller
                         sheet.largestUndimmedDetentIdentifier = largestundimmedIdentifier
                         sheet.preferredCornerRadius = sheetCornerRadius

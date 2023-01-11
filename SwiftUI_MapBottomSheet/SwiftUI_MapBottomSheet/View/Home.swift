@@ -6,6 +6,7 @@ import SwiftUI
 import MapKit
 
 struct Home: View {
+    @State var showAnotherSheet: Bool = false
     var body: some View {
         ZStack {
             //MARK: Sample Coordinate Region
@@ -14,7 +15,7 @@ struct Home: View {
                 .ignoresSafeArea()
                 .overlay(alignment: .topTrailing, content: {
                     Button {
-                        
+                        showAnotherSheet.toggle()
                     } label: {
                         Image(systemName: "gearshape.fill")
                             .font(.title2)
@@ -22,7 +23,7 @@ struct Home: View {
                     .padding()
                 })
             //MARK: Building Sheet UI
-                .bottomSheet(presentationDetents: [.medium, .large, .height(70)], isPresented: .constant(true), sheetCornerRadius: 20) {
+                .bottomSheet(presentationDetents: [.medium, .large, .height(70)], isPresented: .constant(true), sheetCornerRadius: 20, isTransprentBG: true) {
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack(spacing: 15) {
                             TextField("Search Maps", text: .constant(""))
@@ -39,9 +40,16 @@ struct Home: View {
                         .padding()
                         .padding(.top)
                     }
+                    .background(content: {
+                        Rectangle()
+                            .fill(.ultraThinMaterial)
+                            .ignoresSafeArea()
+                    })
+                    .sheet(isPresented: $showAnotherSheet) {
+                        Text("hi another sheet")
+                    }
                 } onDismiss: {
                 }
-
         }
     }
 }
